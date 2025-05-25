@@ -9,7 +9,7 @@
         h1 { color: #2c3e50; }
         .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
         input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
-        .button { background: #007BFF; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; margin-right: 10px; /* Added margin for spacing */ }
+        .button { background: #007BFF; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; margin-right: 10px; }
         .back-button {
             background: #6c757d; /* A neutral grey for 'back' */
             color: white;
@@ -25,11 +25,28 @@
             background: #5a6268;
         }
         iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
+        .info-box { /* Added info-box style */
+            background-color: #e6f7ff; /* Light blue for info */
+            border-left: 4px solid #007BFF; /* Blue border */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
     </style>
 </head>
 <body>
     <h1>🕵️ Google Dorking Awareness Exercise</h1>
     <div class="card">
+        <div class="info-box">
+            <h3>What is Google Dorking?</h3>
+            <p>Google Dorking (also known as Google Hacking) uses advanced search operators to find information that isn't typically accessible through regular searches, but is publicly available and indexed by search engines like Google.</p>
+            <p>This exercise demonstrates how easily sensitive or misconfigured information (like directories of files, login pages, or specific file types) can sometimes be found online if websites are not properly secured. It's a powerful tool for both security researchers and, unfortunately, attackers.</p>
+        </div>
+
         <p><strong>Try this:</strong> Type in a Google Dork query and click "Search". <br>Examples:
             </p><ul>
                 <li><code>intitle:"index of" confidential</code></li>
@@ -39,7 +56,7 @@
         <p></p>
         <input type="text" id="dorkQuery" placeholder="e.g., site:gov filetype:xls password">
         <button class="button" onclick="searchDork()">Search Google</button>
-        <a href="../" class="back-button">Back to Index</a>
+        <a href="../index.html" class="back-button">Back to Index</a>
         <iframe id="resultFrame"></iframe>
     </div>
 
@@ -48,7 +65,13 @@
             const query = document.getElementById("dorkQuery").value;
             const encoded = encodeURIComponent(query);
             const url = "https://www.google.com/search?q=" + encoded;
-            document.getElementById("resultFrame").src = url;
+            
+            // --- THIS IS THE CRUCIAL CHANGE ---
+            window.open(url, '_blank'); // Opens the URL in a new browser tab/window
+            // --- END OF CRUCIAL CHANGE ---
+
+            // Optionally, you can put a message in the iframe since Google won't load there
+            document.getElementById("resultFrame").srcdoc = "<p style='text-align: center; color: #888; margin-top: 50px;'>Google searches open in a new tab for security reasons.</p>";
         }
     </script>
 
