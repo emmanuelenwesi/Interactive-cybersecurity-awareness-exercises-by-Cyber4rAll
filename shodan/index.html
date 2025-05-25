@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shodan Awareness</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f3f6f8; max-width: 900px; margin: auto; }
+    h1 { color: #2c3e50; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
+    input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
+    .button { background: #e67e22; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Shodan Search Exercise</h1>
+  <div class="card">
+    <p><strong>Try this:</strong> Enter a keyword or device type to search on Shodan.<br> (Hint: try "samsung", "cctv", or "default password")</p>
+    <input type="text" id="shodanQuery" placeholder='e.g., webcamxp' />
+    <button class="button" onclick="searchShodan()">Search on Shodan</button>
+    <iframe id="shodanFrame"></iframe>
+  </div>
+
+  <script>
+    function searchShodan() {
+      const query = document.getElementById("shodanQuery").value;
+      const encoded = encodeURIComponent(query);
+      const url = "https://www.shodan.io/search?query=" + encoded;
+      document.getElementById("shodanFrame").src = url;
+    }
+  </script>
+</body>
+</html>
