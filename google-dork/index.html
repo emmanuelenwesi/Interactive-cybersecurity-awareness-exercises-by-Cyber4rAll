@@ -1,41 +1,126 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Google Dorking Exercise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Dorking | Cyber4rAll</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; margin: auto; background: #f8f9fa; }
-    h1 { color: #2c3e50; }
-    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
-    input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
-    .button { background: #007BFF; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f9fc;
+      color: #333;
+      line-height: 1.6;
+      padding: 1rem;
+    }
+
+    header {
+      background-color: #061ca5;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #061ca5;
+      margin-bottom: 1rem;
+    }
+
+    .exercise {
+      margin: 2rem 0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background: #061ca5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e2edb;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <h1>🕵️ Google Dorking Awareness Exercise</h1>
-  <div class="card">
-    <p><strong>Try this:</strong> Type in a Google Dork query and click "Search". <br>Examples:
+  <header>
+    <img src="logo.png" alt="Cyber4rAll Logo" />
+    <h1>Google Dorking Awareness</h1>
+  </header>
+
+  <div class="container">
+    <h2>Test Your Skills with Google Dorking!</h2>
+    <p>Google Dorking lets you uncover publicly available sensitive information using advanced search queries.</p>
+
+    <div class="exercise">
+      <h3>🔍 Try This:</h3>
+      <p>Use Google to search for:</p>
       <ul>
-        <li><code>intitle:"index of" confidential</code></li>
-        <li><code>filetype:pdf site:gov</code></li>
-        <li><code>inurl:login site:edu</code></li>
+        <li><code>filetype:pdf site:nigeria.gov.ng</code> — Find PDF documents on government sites</li>
+        <li><code>intitle:"index of" confidential</code> — Find open directories with the word "confidential"</li>
+        <li><code>inurl:admin login</code> — Search for pages with "admin" in the URL</li>
       </ul>
-    </p>
-    <input type="text" id="dorkQuery" placeholder='e.g., site:gov filetype:xls password' />
-    <button class="button" onclick="searchDork()">Search Google</button>
-    <iframe id="resultFrame"></iframe>
+
+      <p>Type a query below and click "Search Google" to try it out:</p>
+      <input type="text" id="dorkInput" placeholder="e.g. site:edu.ng filetype:xls" />
+      <button onclick="searchDork()">Search Google</button>
+    </div>
   </div>
 
   <script>
     function searchDork() {
-      const query = document.getElementById("dorkQuery").value;
-      const encoded = encodeURIComponent(query);
-      const url = "https://www.google.com/search?q=" + encoded;
-      document.getElementById("resultFrame").src = url;
+      const query = document.getElementById('dorkInput').value;
+      if (query.trim() !== '') {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+      } else {
+        alert('Please enter a Google Dork query.');
+      }
     }
   </script>
 </body>
+
 </html>
