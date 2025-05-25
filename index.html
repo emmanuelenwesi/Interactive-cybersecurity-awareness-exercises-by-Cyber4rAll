@@ -1,35 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WHOIS Exercise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber4rAll Interactive Tools</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; max-width: 900px; margin: auto; }
-    h1 { color: #34495e; }
-    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
-    input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
-    .button { background: #28a745; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #1a202c;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #4a5568;
+      font-size: 1.1rem;
+    }
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .tool-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 1.5rem;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+    }
+    .tool-card h3 {
+      margin-top: 0;
+      color: #2d3748;
+    }
+    .tool-card p {
+      color: #718096;
+    }
+    .tool-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #3182ce;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <h1>🌐 WHOIS Lookup Exercise</h1>
-  <div class="card">
-    <p><strong>Try this:</strong> Enter a domain name and we’ll show you how to run a WHOIS search.</p>
-    <input type="text" id="whoisDomain" placeholder='e.g., example.com' />
-    <button class="button" onclick="lookupWHOIS()">Search on whois.com</button>
-    <iframe id="whoisFrame"></iframe>
-  </div>
+  <h1>Welcome to Cyber4rAll Interactive Tools</h1>
+  <p>Explore real-world cybersecurity tools in a safe, guided way.</p>
 
-  <script>
-    function lookupWHOIS() {
-      const domain = document.getElementById("whoisDomain").value;
-      const encoded = encodeURIComponent(domain);
-      const url = "https://www.whois.com/whois/" + encoded;
-      document.getElementById("whoisFrame").src = url;
-    }
-  </script>
+  <div class="tools">
+    <div class="tool-card">
+      <h3>Google Dorking</h3>
+      <p>See how advanced Google searches can reveal sensitive info.</p>
+      <a href="google-dork/">Start Dorking →</a>
+    </div>
+    <div class="tool-card">
+      <h3>WHOIS Lookup</h3>
+      <p>Discover domain ownership and learn how hackers recon.</p>
+      <a href="whois/">Try WHOIS →</a>
+    </div>
+    <div class="tool-card">
+      <h3>Shodan Search</h3>
+      <p>Search devices exposed to the internet using Shodan.</p>
+      <a href="shodan/">Explore Shodan →</a>
+    </div>
+  </div>
 </body>
 </html>
