@@ -1,35 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WHOIS Exercise</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; max-width: 900px; margin: auto; }
-    h1 { color: #34495e; }
-    .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
-    input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
-    .button { background: #28a745; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WHOIS Exercise</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #eef2f3; max-width: 900px; margin: auto; }
+        h1 { color: #34495e; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 20px; margin: 20px 0; }
+        input[type="text"] { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 10px; }
+        /* Style for the WHOIS search button */
+        .button { background: #28a745; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; margin-right: 10px; /* Added margin for spacing */ }
+        /* Style for the back button */
+        .back-button {
+            background: #6c757d; /* A neutral grey for 'back' */
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none; /* Remove underline from anchor */
+            display: inline-block; /* Allows padding and margin */
+        }
+        .back-button:hover {
+            background: #5a6268;
+        }
+        iframe { width: 100%; height: 400px; border: none; margin-top: 20px; }
+    </style>
 </head>
 <body>
-  <h1>🌐 WHOIS Lookup Exercise</h1>
-  <div class="card">
-    <p><strong>Try this:</strong> Enter a domain name and we’ll show you how to run a WHOIS search.</p>
-    <input type="text" id="whoisDomain" placeholder='e.g., example.com' />
-    <button class="button" onclick="lookupWHOIS()">Search on whois.com</button>
-    <iframe id="whoisFrame"></iframe>
-  </div>
+    <h1>🌐 WHOIS Lookup Exercise</h1>
+    <div class="card">
+        <p><strong>Try this:</strong> Enter a domain name and we’ll show you how to run a WHOIS search.</p>
+        <input type="text" id="whoisDomain" placeholder='e.g., example.com' />
+        <button class="button" onclick="lookupWHOIS()">Search on whois.com</button>
+        <a href="../" class="back-button">Back to Index</a>
+        <iframe id="whoisFrame"></iframe>
+    </div>
 
-  <script>
-    function lookupWHOIS() {
-      const domain = document.getElementById("whoisDomain").value;
-      const encoded = encodeURIComponent(domain);
-      const url = "https://www.whois.com/whois/" + encoded;
-      document.getElementById("whoisFrame").src = url;
-    }
-  </script>
+    <script>
+        function lookupWHOIS() {
+            const domain = document.getElementById("whoisDomain").value;
+            const encoded = encodeURIComponent(domain);
+            const url = "https://www.whois.com/whois/" + encoded;
+            document.getElementById("whoisFrame").src = url;
+        }
+    </script>
 </body>
 </html>
